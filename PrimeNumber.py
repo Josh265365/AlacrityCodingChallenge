@@ -17,26 +17,52 @@ def is_prime(num):
             return False
     return True
 
+#cathching invalid inputs using try and except block
+def get_valid_integer(prompt):
+    while True:
+        user_input = input(prompt)
+        try:
+            return int(user_input)
+        except ValueError:
+            print(f"Invalid input '{user_input}'. Please enter a whole number.")
+            
 
+            
 #------Main Program------
+def main():
+    pass
+
+
 print("----------------------------------------------------")
 print ("Welcome to the prime number checker!")
 print("----------------------------------------------------")
 
-#cathching invalid inputs using try and except block
-#if a user inputs a string or a float value instead of an integer the program should ask for a valid integer instead of closing. 
+
 while True:
-    try:
-        num = int(input("Enter a number to check if it is prime: "))
-        
+    
+    print ("please select an option:")
+    print ("1. Check if a number is prime")
+    print ("2. Exit")
+    
+    option = input("Enter your choice (1 or 2): ")
+    if option == '1':
+        num = get_valid_integer("Enter a number: ")
+            
         if is_prime(num):
-            print(f"{num} prime!")
+            #If prime - output the string 'Prime!' 
+            print("Prime!")
         else:
+                #If not prime, output factors 
             factors = get_factor(num)
-            print(f"{num} is not a prime number. Its factors are: {factors}")
+            print(f"{num} is not prime.")
+            print(f"Factors: {factors}")
+    
+    elif option == '2':
+        print("Exiting the program. Goodbye!")
         break
-    except ValueError:
-        print("Invalid input. Please enter a valid integer.")
+        
+        
+        
     
 
 
